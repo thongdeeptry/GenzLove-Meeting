@@ -226,7 +226,7 @@ const eventAdd = (element) => {
 const shareScreenBtn = document.getElementById("share-screen");
 shareScreenBtn.addEventListener("click", (e) => {
   if (e.target.classList.contains("true")) return;
-  e.target.setAttribute("tool_tip", "You are already presenting screen");
+  e.target.setAttribute("tool_tip", "Bạn đang chia sẻ màn hình");
   e.target.classList.add("true");
   navigator.mediaDevices
     .getDisplayMedia({
@@ -251,7 +251,7 @@ shareScreenBtn.addEventListener("click", (e) => {
       const stopBtn = document.createElement("button");
       stopBtn.classList.add("video-element");
       stopBtn.classList.add("stop-presenting-button");
-      stopBtn.innerHTML = "Stop Sharing";
+      stopBtn.innerHTML = "Ngừng Chia Sẻ";
       elementsWrapper.classList.add("screen-share");
       elementsWrapper.appendChild(stopBtn);
       videoTrack.onended = () => {
@@ -270,7 +270,7 @@ shareScreenBtn.addEventListener("click", (e) => {
 
 const stopPresenting = (videoTrack) => {
   shareScreenBtn.classList.remove("true");
-  shareScreenBtn.setAttribute("tool_tip", "Present Screen");
+  shareScreenBtn.setAttribute("tool_tip", "Chia Sẻ Màn Hình");
   for (peer in peers) {
     let sender = peers[peer].peerConnection.getSenders().find(function (s) {
       return s.track.kind == videoTrack.kind;
@@ -301,13 +301,13 @@ videoToggleBtn.addEventListener("click", (e) => {
     socket.emit("video-toggle", false);
     videoWrapperVideoToggle(myVideo, false);
     currentElement.innerHTML = `<ion-icon name="videocam-off-outline"></ion-icon>`;
-    currentElement.setAttribute("tool_tip", "Video On");
+    currentElement.setAttribute("tool_tip", "Bật Video");
   } else {
     myVideoStream.getVideoTracks()[0].enabled = true;
     socket.emit("video-toggle", true);
     videoWrapperVideoToggle(myVideo, true);
     currentElement.innerHTML = `<ion-icon name="videocam-outline"></ion-icon>`;
-    currentElement.setAttribute("tool_tip", "Video Off");
+    currentElement.setAttribute("tool_tip", "Tắt Video");
   }
 });
 
@@ -326,13 +326,13 @@ micToggleButton.addEventListener("click", (e) => {
     videoWrapperMicToggle(myVideo, false);
     myVideoStream.getAudioTracks()[0].enabled = false;
     currentElement.innerHTML = `<ion-icon name="mic-off-outline"></ion-icon>`;
-    currentElement.setAttribute("tool_tip", "Microphone On");
+    currentElement.setAttribute("tool_tip", "Bật Mic");
   } else {
     socket.emit("audio-toggle", true);
     videoWrapperMicToggle(myVideo, true);
     myVideoStream.getAudioTracks()[0].enabled = true;
     currentElement.innerHTML = `<ion-icon name="mic-outline"></ion-icon>`;
-    currentElement.setAttribute("tool_tip", "Microphone Off");
+    currentElement.setAttribute("tool_tip", "Tắt Mic");
   }
 });
 
@@ -371,7 +371,7 @@ meetingToggleBtn.addEventListener("click", (e) => {
     currentElement.classList.remove("call-button");
     currentElement.classList.add("call-end-button");
     currentElement.classList.add("tooltip-danger");
-    currentElement.setAttribute("tool_tip", "Leave the Meeting");
+    currentElement.setAttribute("tool_tip", "Thoát");
     socket.emit(
       "join-room",
       ROOM_ID,
@@ -494,7 +494,7 @@ recordingBtn.addEventListener("click", (e) => {
 
   // recording start
   if (indicator == null) {
-    currentElement.setAttribute("tool_tip", "Stop Recording");
+    currentElement.setAttribute("tool_tip", "Dừng Quay Cuộc Họp");
     currentElement.classList.add("tooltip-danger");
     currentElement.classList.add("blink");
     const recordingElement = document.createElement("div");
@@ -517,7 +517,7 @@ recordingBtn.addEventListener("click", (e) => {
     anchor.click();
     window.URL.revokeObjectURL(url);
     recorder.stop();
-    currentElement.setAttribute("tool_tip", "Start Recording");
+    currentElement.setAttribute("tool_tip", "Bắt Đầu Ghi Hình");
     currentElement.classList.remove("tooltip-danger");
     currentElement.classList.remove("blink");
     indicator.remove();

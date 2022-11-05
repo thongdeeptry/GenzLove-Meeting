@@ -9,8 +9,11 @@ const passportAuthenticator = (passport, user) => {
           if (err) return done(err);
           if (data) {
             if ((data, password == password)) done(null, data);
-            else return done(null, false, { message: "Password Incorrect" });
-          } else return done(null, false, { message: "Username Not found" });
+            else return done(null, false, { message: "Mật khẩu không đúng" });
+          } else
+            return done(null, false, {
+              message: "Tên người dùng không tồn tại",
+            });
         });
       }
     )
