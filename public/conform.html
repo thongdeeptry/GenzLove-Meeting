@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <title>GenzLove Meeting</title>
+  </head>
+
+  <body>
+    <div
+      class="container py-5"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <div class="card" style="width: 25rem">
+        <div class="card-header">GenzLove Meeting</div>
+        <div class="card-body">
+          <form action="/join-room" method="POST">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Nhập ID Phòng</label
+              >
+              <input
+                required
+                name="room_id"
+                class="form-control"
+                placeholder="Room Id"
+              />
+              <div class="form-text">
+                Bạn phải nhập id phòng để vào một phòng cụ thể.
+              </div>
+            </div>
+            <button
+              style="width: 100%"
+              type="submit"
+              class="btn btn-primary mb-3"
+            >
+              Tham gia
+            </button>
+          </form>
+          <form action="/create-room" method="POST">
+            <button style="width: 100%" type="submit" class="btn btn-success">
+              Tạo phòng mới
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
